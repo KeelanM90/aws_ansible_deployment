@@ -76,3 +76,7 @@ infrastructure_db_allocated_storage: 100
 # RHEL
 infrastructure_aap_version: "2.4"
 infrastructure_rhel_version: "9"
+
+
+# Redis (Redis mode is required for AAP 2.5+)
+infrastructure_redis_mode: cluster

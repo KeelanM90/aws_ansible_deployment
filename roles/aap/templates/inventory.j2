@@ -21,6 +21,9 @@ peers=execution_nodes
 [database]
 
 [all:vars]
+{% if infrastructure_redis_mode is defined %}
+redis_mode= {{ infrastructure_redis_mode }}
+{% endif %}
 admin_password='{{ aap_admin_password }}'
 
 pg_host='{{ aap_db_host }}'
@@ -38,6 +41,16 @@ registry_password='{{ aap_red_hat_password }}'
 # ee_from_hub_only =
 
 receptor_listener_port=27199
+
+{% if infrastructure_aap_version is defined and infrastructure_aap_version is version('2.5', '>=') %}
+automationgateway_admin_password='{{ aap_admin_password }}'
+automationgateway_pg_host='{{ aap_db_host }}'
+automationgateway_pg_port=5432
+automationgateway_pg_database='gateway'
+automationgateway_pg_username='{{ infrastructure_db_username }}'
+automationgateway_pg_password='{{ infrastructure_db_password }}'
+automationgateway_pg_sslmode='prefer'
+{% endif %}
 
 automationhub_admin_password='{{ aap_admin_password }}'
 
