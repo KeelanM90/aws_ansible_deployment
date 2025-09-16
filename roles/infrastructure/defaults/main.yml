@@ -55,6 +55,10 @@ infrastructure_hub_shape: m5a.large
 infrastructure_eda_instances: 0
 infrastructure_eda_shape: m5a.xlarge
 
+# Gateway (Ansible Automation Platform 2.5+)
+infrastructure_gateway_instances: 0
+infrastructure_gateway_shape: m5a.large
+
 # Database
 infrastructure_db_username: ansible
 infrastructure_db_password: changeme

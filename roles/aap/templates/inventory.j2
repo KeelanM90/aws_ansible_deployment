@@ -13,6 +13,11 @@ peers=execution_nodes
 [automationedacontroller]
 {{ aap_eda_hosts | join('\n') }}
 
+{% if infrastructure_aap_version is defined and infrastructure_aap_version is version('2.5', '>=') %}
+[gateway]
+{{ aap_gateway_hosts | join('\n') }}
+{% endif %}
+
 [database]
 
 [all:vars]

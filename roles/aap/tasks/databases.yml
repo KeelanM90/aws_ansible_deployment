@@ -21,3 +21,12 @@
     login_user: "{{ infrastructure_db_username }}"
     login_password: "{{ infrastructure_db_password }}"
   when: aap_eda_hosts | length > 0
+
+- name: Create a database for Gateway
+  community.postgresql.postgresql_db:
+    name: gateway
+    login_host: "{{ aap_db_host }}"
+    login_user: "{{ infrastructure_db_username }}"
+    login_password: "{{ infrastructure_db_password }}"
+  when: 
+  - aap_gateway_hosts | length > 0

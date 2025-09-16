@@ -12,6 +12,7 @@
     - controller
     - hub
     - eda
+    - gateway
 
 - name: Set deployment stat
   ansible.builtin.set_stats:
@@ -25,6 +26,7 @@
     - controller
     - hub
     - eda
+    - gateway
 
 - name: Print deployment ID
   ansible.builtin.debug:
@@ -36,3 +38,4 @@
     - controller
     - hub
     - eda
+    - gateway

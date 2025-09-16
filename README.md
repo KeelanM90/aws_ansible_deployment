@@ -86,6 +86,8 @@ The following identifies the variables that you **must** set before running the 
 
 The following is an example of a variables file with required and optional fields that can be used to tailor a deployment.  This example uses a custom AMI that was created with [Image Builder][image-builder], it provides a certificate and values to create a load balancer in front of Automation Controller, and it will run the AAP installer once the infrastructure is configured.
 
+When setting `infrastructure_aap_version` to AAP 2.5+, you must also add a gateway subnet to your VPC subnets. See the commented out example below.
+
 You may save this as any file, but later examples will use a file called `vars.yml` as a representation of this file.
 
 ```yaml
@@ -118,6 +120,27 @@ infrastructure_db_password: ansible_automation_platform_password
 infrastructure_create_controller_lb: true
 infrastructure_cert_local_folder_path: /etc/ssl/
 infrastructure_cert_domain_name: controller.my.custom.domain
+
+# For AAP 2.5+ deployments, add the following variables:
+# infrastructure_aap_version: "2.5"
+# Example: Add a gateway subnet for AAP 2.5+
+# infrastructure_vpc_subnets:
+#   - name: controller
+#     cidr: 172.16.0.0/24
+#     az: us-east-1a
+#   - name: execution
+#     cidr: 172.16.1.0/24
+#     az: us-east-1b
+#   - name: hub
+#     cidr: 172.16.2.0/24
+#     az: us-east-1c
+#   - name: eda
+#     cidr: 172.16.3.0/24
+#     az: us-east-1d
+#   - name: gateway
+#     cidr: 172.16.4.0/24
+#     az: us-east-1e
+# The generated inventory and SSH config will include a [gateway] group and gateway hosts if infrastructure_aap_version >= 2.5.
 
 aap_installer_ssh_key: aws_test_key
 aap_installer_ssh_key_src: "~/.ssh/{{ aap_installer_ssh_key }}"
