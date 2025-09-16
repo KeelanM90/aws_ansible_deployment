@@ -6,7 +6,7 @@
     - controller
     - hub
     - eda
-    - "{{ 'gateway' if (aap_version is version('2.5', '>=')) else omit }}"
+    - "{{ 'gateway' if (infrastructure_aap_version is version('2.5', '>=')) else omit }}"
 
 - name: Debug VM name
   ansible.builtin.debug:
@@ -15,7 +15,7 @@
     - controller
     - hub
     - eda
-    - "{{ 'gateway' if (aap_version is version('2.5', '>=')) else omit }}"
+    - "{{ 'gateway' if (infrastructure_aap_version is version('2.5', '>=')) else omit }}"
 
 - name: Create EC2 instance
   vars:
@@ -41,7 +41,7 @@
     - controller
     - hub
     - eda
-    - "{{ 'gateway' if (aap_version is version('2.5', '>=')) else omit }}"
+    - "{{ 'gateway' if (infrastructure_aap_version is version('2.5', '>=')) else omit }}"
 
 - name: Output the IP of new VM
   ansible.builtin.debug:
@@ -55,7 +55,7 @@
     - controller
     - hub
     - eda
-    - "{{ 'gateway' if (aap_version is version('2.5', '>=')) else omit }}"
+    - "{{ 'gateway' if (infrastructure_aap_version is version('2.5', '>=')) else omit }}"
 
 - name: Set stats for Controller of new VM
   ansible.builtin.set_stats:
@@ -69,7 +69,7 @@
     - controller
     - hub
     - eda
-    - "{{ 'gateway' if (aap_version is version('2.5', '>=')) else omit }}"
+    - "{{ 'gateway' if (infrastructure_aap_version is version('2.5', '>=')) else omit }}"
 
 - name: Add public IP host to installer
   when: groups.installer is not defined
@@ -81,7 +81,7 @@
     - controller
     - hub
     - eda
-    - "{{ 'gateway' if (aap_version is version('2.5', '>=')) else omit }}"
+    - "{{ 'gateway' if (infrastructure_aap_version is version('2.5', '>=')) else omit }}"
 
 - name: Add public IP hosts to group
   ansible.builtin.add_host:
@@ -91,7 +91,7 @@
     - controller
     - hub
     - eda
-    - "{{ 'gateway' if (aap_version is version('2.5', '>=')) else omit }}"
+    - "{{ 'gateway' if (infrastructure_aap_version is version('2.5', '>=')) else omit }}"
 
 - name: Add private IPs hosts to group
   ansible.builtin.add_host:
@@ -101,4 +101,4 @@
     - controller
     - hub
     - eda
-    - "{{ 'gateway' if (aap_version is version('2.5', '>=')) else omit }}"
+    - "{{ 'gateway' if (infrastructure_aap_version is version('2.5', '>=')) else omit }}"
