@@ -9,6 +9,7 @@
     - controller
     - hub
     - eda
+    - "{{ 'gateway' if (aap_version is version('2.5', '>=')) else omit }}"
 
 - name: Ensure rhsm is managing repos
   ansible.builtin.command: sudo subscription-manager config --rhsm.manage_repos=1
@@ -18,6 +19,7 @@
     - controller
     - hub
     - eda
+    - "{{ 'gateway' if (aap_version is version('2.5', '>=')) else omit }}"
 
 - name: Enable the AAP installer repository
   ansible.builtin.command: "sudo subscription-manager repos --enable ansible-automation-platform-{{ infrastructure_aap_version }}-for-rhel-{{ infrastructure_rhel_version }}-{{ infrastructure_architecture }}-rpms"
@@ -27,3 +29,4 @@
     - controller
     - hub
     - eda
+    - "{{ 'gateway' if (aap_version is version('2.5', '>=')) else omit }}"

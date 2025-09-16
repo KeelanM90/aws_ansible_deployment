@@ -7,6 +7,7 @@
     - controller
     - hub
     - eda
+    - "{{ 'gateway' if (aap_version is version('2.5', '>=')) else omit }}"
 
 - name: Install required packages
   ansible.builtin.dnf:
@@ -18,3 +19,4 @@
     - controller
     - hub
     - eda
+    - "{{ 'gateway' if (aap_version is version('2.5', '>=')) else omit }}"
