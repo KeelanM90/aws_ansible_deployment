@@ -49,5 +49,5 @@
   tasks:
     - name: Deploy Infrastructure
       ansible.builtin.import_role:
-        name: infrastructure
+        name: lab.aws_deployment.infrastructure
         tasks_from: destroy
