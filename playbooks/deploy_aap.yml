@@ -48,6 +48,18 @@
         - eda
         - "{{ 'gateway' if (infrastructure_aap_version is version('2.5', '>=')) else omit }}"
 
+    - name: Configure Redis for AAP 2.5
+      ansible.builtin.include_role:
+        name: lab.aws_deployment.infrastructure
+        tasks_from: vms/redis
+      when: 
+        - infrastructure_aap_version is version('2.5', '>=')
+        - inventory_hostname in (groups.gateway_public + groups.hub_public + groups.eda_public)
+      tags:
+        - gateway
+        - hub
+        - eda
+
 - name: Install AAP
   hosts: installer
   gather_facts: false

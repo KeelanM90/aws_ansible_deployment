@@ -21,10 +21,10 @@ peers=execution_nodes
 [database]
 
 [all:vars]
-{% if infrastructure_redis_mode is defined %}
-redis_mode= {{ infrastructure_redis_mode }}
-{% endif %}
 admin_password='{{ aap_admin_password }}'
+{% if infrastructure_redis_mode is defined %}
+redis_mode={{ infrastructure_redis_mode }}
+{% endif %}
 
 pg_host='{{ aap_db_host }}'
 pg_port=5432

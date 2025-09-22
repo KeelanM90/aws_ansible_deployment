@@ -1,0 +1,11 @@
+---
+- name: Start Redis service for AAP 2.5
+  ansible.builtin.systemd:
+    name: redis
+    enabled: true
+    state: started
+  become: true
+  tags:
+    - gateway
+    - hub
+    - eda

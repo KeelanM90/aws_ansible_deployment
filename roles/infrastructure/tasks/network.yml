@@ -115,6 +115,7 @@
               - 80
               - 443
               - 5432
+              - 6379 # Redis for AAP 2.5
               - 8443
               - 27199
             cidr_ip: "{{ infrastructure_vpc_cidr }}"
